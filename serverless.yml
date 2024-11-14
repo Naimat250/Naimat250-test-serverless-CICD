@@ -19,7 +19,6 @@ functions:
             Fn::GetAtt:
               - MyQueue
               - Arn
-
 resources:
   - ${file(resources/iam.yml)}
   - ${file(resources/sns.yml)}
