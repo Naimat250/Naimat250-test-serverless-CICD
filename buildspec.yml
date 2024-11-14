@@ -19,6 +19,6 @@ phases:
   build:
     commands:
       # Deploy Serverless application
-      - sls deploy --stage dev --region us-west-2  
+      - serverless deploy --stage dev --region us-west-2 --pofile naimat-softoo  
 
 
