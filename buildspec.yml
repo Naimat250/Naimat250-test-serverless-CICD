@@ -7,8 +7,7 @@ phases:
     commands:
       # Install Serverless framework
       - npm install -g serverless
-      # Install dependencies (if you have a package.json file)
-      - npm install
+    
 
   pre_build:
     commands:
