@@ -5,7 +5,7 @@ provider:
   name: aws
   runtime: nodejs20.x
   region: us-west-2
-  profile: naimat-softoo
+  # profile: naimat-softoo
   iam:
     role:
       Fn::GetAtt: [LambdaExecutionRole, Arn]
