@@ -1,0 +1,27 @@
+service: sqs
+frameworkVersion: "3"
+
+provider:
+  name: aws
+  runtime: nodejs16.x
+  region: us-west-2
+  profile: naimat-softoo
+  iam:
+    role:
+      Fn::GetAtt: [LambdaExecutionRole, Arn]
+
+functions:
+  sqsWorker:
+    handler: handler.main
+    events:
+      - sqs:
+          arn:
+            Fn::GetAtt:
+              - MyQueue
+              - Arn
+
+resources:
+  - ${file(resources/iam.yml)}
+  - ${file(resources/sns.yml)}
+  - ${file(resources/sqs.yml)}
+  

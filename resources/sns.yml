@@ -1,0 +1,16 @@
+Resources:
+  MyTopic:
+    Type: AWS::SNS::Topic
+    Properties:
+      TopicName: MyTopic
+
+  MyQueueSubscription:
+    Type: AWS::SNS::Subscription
+    Properties:
+      TopicArn:
+        Ref: MyTopic
+      Protocol: sqs
+      Endpoint:
+        Fn::GetAtt:
+          - MyQueue
+          - Arn
