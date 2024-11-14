@@ -1,0 +1,27 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      nodejs: 16
+    commands:
+      # Install Serverless framework
+      - npm install -g serverless
+      # Install dependencies (if you have a package.json file)
+      - npm install
+
+  pre_build:
+    commands:
+      # Configure AWS CLI with environment variables
+      - aws configure set aws_access_key_id $AWS_ACCESS_KEY_ID
+      - aws configure set aws_secret_access_key $AWS_SECRET_ACCESS_KEY
+      - aws configure set region us-west-2  # Set your region
+
+  build:
+    commands:
+      # Deploy Serverless application
+      - sls deploy --stage dev --region us-west-2  # Adjust the stage and region
+
+artifacts:
+  files:
+    - '**/*'
