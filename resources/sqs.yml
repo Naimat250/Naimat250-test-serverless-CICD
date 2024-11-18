@@ -3,6 +3,17 @@ Resources:
     Type: AWS::SQS::Queue
     Properties:
       QueueName: MyQueue
+      RedrivePolicy:
+        deadLetterTargetArn:
+          Fn::GetAtt:
+            - MyDLQ
+            - Arn
+        maxReceiveCount: 3 # Number of retries before moving to DLQ
+
+  MyDLQ:
+    Type: AWS::SQS::Queue
+    Properties:
+      QueueName: MyDLQ
 
   SqsQueuePolicy:
     Type: AWS::SQS::QueuePolicy
