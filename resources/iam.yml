@@ -26,3 +26,9 @@ Resources:
                   - "sns:Publish"
                 Resource:
                   - Ref: MyTopic
+              - Effect: Allow
+                Action:
+                  - "logs:CreateLogGroup"
+                  - "logs:CreateLogStream"
+                  - "logs:PutLogEvents"
+                Resource: "arn:aws:logs:*:*:*"
